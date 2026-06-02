@@ -35239,19 +35239,16 @@ body.theme-frosted .modal {
   #hwfit-deps-server { padding-bottom: 4px; line-height: 1; }
 }
 
-/* Emoji rendered as monochrome line icons (OpenMoji-black via /api/emoji proxy)
-   instead of colorful system glyphs — project rule: never colorful emoji. The
-   SVG is used as a mask filled with the current text color, so it tints to the
-   theme. Sized to sit on the text baseline. */
+/* Emoji rendered as colorful icons (OpenMoji-color via /api/emoji proxy).
+   SVG is used as background image so colors are preserved.
+   Sized to sit on the text baseline. */
 .emoji {
   height: 1.15em;
   width: 1.15em;
   vertical-align: -0.18em;
   margin: 0 0.05em;
   display: inline-block;
-  background-color: currentColor;
-  -webkit-mask: var(--em) center / contain no-repeat;
-          mask: var(--em) center / contain no-repeat;
+  background: var(--em) center / contain no-repeat;
 }
 
 /* Nudge the X icon in the "Clear all" button down 2px. */

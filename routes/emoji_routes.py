@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 _CACHE_DIR = Path(__file__).resolve().parent.parent / "data" / "emoji_cache"
 # OpenMoji "black" set = monochrome line-art SVGs. Filenames are the codepoints
 # in UPPERCASE (FE0F dropped, same as we compute), '-' joined.
-_OPENMOJI_BASE = "https://cdn.jsdelivr.net/npm/openmoji@15.0.0/black/svg"
+_OPENMOJI_BASE = "https://cdn.jsdelivr.net/npm/openmoji@15.0.0/color/svg"
 # codepoints like "1f600" or "1f468-200d-1f469-200d-1f467" (lowercase hex, '-' joined)
 _CODE_RE = re.compile(r"^[0-9a-f]{2,6}(?:-[0-9a-f]{2,6})*$")
 _SVG_HEADERS = {"Cache-Control": "public, max-age=31536000, immutable"}
