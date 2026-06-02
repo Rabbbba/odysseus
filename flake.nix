@@ -80,12 +80,12 @@
               tmux attach -t "$SESSION_NAME"
             else
               # Start a new background session and launch the process manager
-              tmux new -s "$SESSION_NAME" "process-compose up"
+              process-compose up
             fi
 
             # 3. Clean Exit
             # Once the user kills the tmux session (e.g., via odysseus-down), safely exit the Nix shell
-            exit
+            # exit
           '';
         };
     });

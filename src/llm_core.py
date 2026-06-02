@@ -607,21 +607,7 @@ def _sanitize_llm_messages(messages: List[Dict]) -> List[Dict]:
         if not isinstance(msg, dict):
             continue
         item = {k: v for k, v in msg.items() if k in allowed and v is not None}
-        role = item.get("role")
-        if not role:
-            continue
-        if role == "assistant":
-            # Re-add an explicit content=None when the message is tool-calls-only
-            # (the None was stripped above) so the provider gets the spec-correct
-            # `content: null`, not an omitted key.
-            if "content" not in item and item.get("tool_calls"):
-                item["content"] = None
-            if "content" in item or item.get("tool_calls"):
-                cleaned.append(item)
-        elif role == "tool":
-            if "content" in item and "tool_call_id" in item:
-                cleaned.append(item)
-        elif "content" in item:
+        if "role" in item and ("content" in item or "tool_calls" in item or "tool_call_id" in item):
             cleaned.append(item)
 
     # Repair tool-call adjacency before sending to any OpenAI-compatible

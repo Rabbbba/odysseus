@@ -6,7 +6,7 @@ processes:
 
   # 1. Vector Database Process
   chroma:
-    command: chroma run --path ./data/chroma
+    command: chroma run --path ./data/chroma --port 8100
     availability:
       # Automatically recovers the database if it crashes unexpectedly
       restart: "on_failure"
