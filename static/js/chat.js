@@ -459,6 +459,8 @@ import createResearchSynapse from './researchSynapse.js';
           const ok = await sessionModule.materializePendingSession();
           if (!ok || !sessionModule.getCurrentSessionId()) { _releaseSendFlag(); return; }
         } else {
+          el('message').value = '';
+          if (uiModule.autoResize) uiModule.autoResize(el('message'));
           addMessage('assistant',
             'No chat session active. You can:\n\n' +
             '- Open the model picker in the chat box and pick a model\n' +
@@ -468,6 +470,8 @@ import createResearchSynapse from './researchSynapse.js';
           return;
         }
       } catch (e) {
+        el('message').value = '';
+        if (uiModule.autoResize) uiModule.autoResize(el('message'));
         addMessage('assistant',
           'No chat session active. You can:\n\n' +
           '- Open the model picker in the chat box and pick a model\n' +
